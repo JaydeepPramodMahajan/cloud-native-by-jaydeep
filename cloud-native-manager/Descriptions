@@ -1,0 +1,23 @@
+uvicorn--> To run the Fast Api on server
+Your requirements.txt keeps track of the exact package versions needed to run the project. we use--->pip freeze > requirements.txt
+from pydantic import BaseModel
+from datetime import datetime
+from typing import Optional
+Why?
+BaseModel → Every FastAPI schema inherits from this.
+datetime → For storing when the task was created.
+Optional → Makes a field optional.
+router = APIRouter(
+    prefix="/tasks",
+    tags=["Tasks"]
+)
+APIRouter groups all task-related APIs together.
+
+Instead of writing:
+
+/tasks
+/tasks/1
+/tasks/2
+
+inside main.py, we keep them in a separate router.
+The above will create the router

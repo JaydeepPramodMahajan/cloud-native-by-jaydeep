@@ -1,0 +1,52 @@
+Docker Explatation
+FROM python:3.14--> Every Docker image starts from another docker image
+Start with official python image
+
+WORKDIR /app--> Every Command will work in app
+Similar to cd app 
+
+COPY requirements.txt .
+Copy it into the current working directory."
+
+RUN pip install -r requirements.txt
+All my reqiuremnets are in reqiuremnets.txt 
+so we are simply running the requirements file to run it and it will automaticallly installed in the user
+
+COPY . .
+This copies everything from your project into the container.
+
+EXPOSE 8000
+It will listen to port
+
+why we have git ignore ??
+When Docker executes:
+
+COPY . .
+
+it copies everything.
+
+Without .dockerignore, it will also copy:
+
+your virtual environment
+Git history
+test cache
+IDE settings
+
+This makes the image much larger.
+
+to buid the image user
+docker build -t cloud-native-managerr:v1 .
+docker build--> to build image
+-t --> to take the tag
+Build simply read your docker file and then converts into image
+
+TO run the container
+docker run -d -p 8000:8000 --name task-api cloud-native-manager:v1
+-d -->detach mode to run the container in background
+-p-->Hosty mappinf
+Host:configuratio
+8000:8000
+
+
+docker build --no-cache -t cloud-native-manager:v1 .
+For forcefully clearing the old cache and then building it

@@ -1,0 +1,44 @@
+uvicorn--> To run the Fast Api on server
+Your requirements.txt keeps track of the exact package versions needed to run the project. we use--->pip freeze > requirements.txt
+from pydantic import BaseModel
+from datetime import datetime
+from typing import Optional
+Why?
+BaseModel → Every FastAPI schema inherits from this.
+datetime → For storing when the task was created.
+Optional → Makes a field optional.
+router = APIRouter(
+    prefix="/tasks",
+    tags=["Tasks"]
+)
+APIRouter groups all task-related APIs together.
+
+Instead of writing:
+
+/tasks
+/tasks/1
+/tasks/2
+
+inside main.py, we keep them in a separate router.
+
+@router.get("/", response_model=list[Task]) 
+@router.delete("/{task_id}", status_code=status.HTTP_204_NO_CONTENT) 
+Why we take the list(Task ) in paramater and why we use staus code in delete
+--> It can be possible that in the get method more than one tasks are present
+so to get that all tasks we state that if their are more than one task then simply 
+take in list then return so thats why we use list[Task]
+
+if we want single instance then we use simple =
+
+and in delete to not get any different error we use status code
+
+
+
+Testing :- 
+pip install pytest httpx pytest-cov
+
+To make my code more formatable We are usig the black ruff
+pip install black ruff
+then black . to run
+
+Testing Error are Still there in the system
