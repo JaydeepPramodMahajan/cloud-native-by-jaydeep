@@ -7,6 +7,7 @@ Similar to cd app
 
 COPY requirements.txt .
 Copy it into the current working directory."
+Copy simply takes the value from Dir to container
 
 RUN pip install -r requirements.txt
 All my reqiuremnets are in reqiuremnets.txt 
