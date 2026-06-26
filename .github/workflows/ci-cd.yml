@@ -60,9 +60,10 @@ jobs:
                   cat .github/workflows/ci-cd.yml    
             
       - name: Build Docker Image
-        run:   docker build \
-         -t ${{ secrets.DOCKER_USERNAME }}/cloud-native-by-jaydeep:latest \
-         ./cloud-native-manager
+        run: |
+         docker build \
+           -t ${{ secrets.DOCKER_USERNAME }}/cloud-native-by-jaydeep:latest \
+           ./cloud-native-manager
 
 
       - name : Push Docker image
